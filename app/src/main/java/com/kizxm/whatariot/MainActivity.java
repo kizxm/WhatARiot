@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = MainActivity.class.getSimpleName();
     private Button mChampionButton;
     private EditText mChampionEditText;
 
@@ -25,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String champion = mChampionEditText.getText().toString();
-                Log.d(TAG, champion);
                 Intent intent = new Intent(MainActivity.this, ChampActivity.class);
+                intent.putExtra("champion", champion);
                         startActivity(intent);
             }
         });
