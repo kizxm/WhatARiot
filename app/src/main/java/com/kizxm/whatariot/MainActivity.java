@@ -11,22 +11,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button mChampionButton;
-    private EditText mChampionEditText;
-    private TextView mRiotTextView;
+    @Bind (R.id.championButton) Button mChampionButton;
+    @Bind (R.id.championEditText) EditText mChampionEditText;
+    @Bind (R.id.riotView) TextView mRiotTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRiotTextView = (TextView) findViewById(R.id.riotView);
+        ButterKnife.bind(this);
+
         Typeface deliFont = Typeface.createFromAsset(getAssets(), "fonts/delrium.ttf");
         mRiotTextView.setTypeface(deliFont);
 
-        mChampionEditText = (EditText) findViewById(R.id.championEditText);
-        mChampionButton = (Button) findViewById(R.id.championButton);
         mChampionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

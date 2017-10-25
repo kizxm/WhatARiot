@@ -10,9 +10,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ChampActivity extends AppCompatActivity {
-    private TextView mChampionTextView;
-    private ListView mListView;
+    @Bind(R.id.championTextView) TextView mChampionTextView;
+    @Bind(R.id.listView) ListView mListView;
+
     private String[] champions = new String[] {"Mi Mero Mole", "Mother's Bistro",
             "Life of Pie", "Screen Door", "Luc Lac", "Sweet Basil",
             "Slappy Cakes", "Equinox", "Miss Delta's", "Andina",
@@ -24,9 +28,8 @@ public class ChampActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_champ);
 
-        mListView = (ListView) findViewById(R.id.listView);
-        mChampionTextView = (TextView) findViewById(R.id.championTextView);
-
+        ButterKnife.bind(this);
+        
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, champions);
         mListView.setAdapter(adapter);
 
