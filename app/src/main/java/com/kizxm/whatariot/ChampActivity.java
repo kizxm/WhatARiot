@@ -3,6 +3,7 @@ package com.kizxm.whatariot;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,10 +11,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class ChampActivity extends AppCompatActivity {
+
+    public static final String TAG = ChampActivity.class.getSimpleName();
+
     @Bind(R.id.championTextView) TextView mChampionTextView;
     @Bind(R.id.listView) ListView mListView;
 
@@ -44,5 +53,28 @@ public class ChampActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String champion = intent.getStringExtra("champion");
         mChampionTextView.setText("Champion Data: " + champion);
+        getChampions(champion);
+    }
+
+    private void getChampions(String champion) {
+        final PandaService pandaService = new PandaService();
+        pandaService.findChampions(champion, new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
     }
 }
