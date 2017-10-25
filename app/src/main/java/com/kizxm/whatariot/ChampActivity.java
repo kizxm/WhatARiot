@@ -29,7 +29,7 @@ public class ChampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_champ);
 
         ButterKnife.bind(this);
-        
+
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, champions);
         mListView.setAdapter(adapter);
 
