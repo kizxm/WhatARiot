@@ -14,7 +14,7 @@ import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind (R.id.championButton) Button mChampionButton;
     @Bind (R.id.championEditText) EditText mChampionEditText;
     @Bind (R.id.riotView) TextView mRiotTextView;
@@ -29,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
         Typeface deliFont = Typeface.createFromAsset(getAssets(), "fonts/delrium.ttf");
         mRiotTextView.setTypeface(deliFont);
 
-        mChampionButton.setOnClickListener(new View.OnClickListener() {
+        mChampionButton.setOnClickListener(this);
+    }
+
             @Override
             public void onClick(View v) {
-                String champion = mChampionEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, ChampActivity.class);
-                intent.putExtra("champion", champion);
-                        startActivity(intent);
-            }
-        });
+                if (v == mChampionButton) {
+                    String champion = mChampionEditText.getText().toString();
+                    Intent intent = new Intent(MainActivity.this, ChampActivity.class);
+                    intent.putExtra("champion", champion);
+                    startActivity(intent);
+        }
     }
 }
