@@ -3,12 +3,15 @@ package com.kizxm.whatariot.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kizxm.whatariot.R;
+import com.kizxm.whatariot.adapters.ChampionListAdapter;
 import com.kizxm.whatariot.models.Champion;
 import com.kizxm.whatariot.services.PandaService;
 
@@ -25,8 +28,8 @@ public class ChampActivity extends AppCompatActivity {
 
     public static final String TAG = ChampActivity.class.getSimpleName();
 
-    @Bind(R.id.championTextView) TextView mChampionTextView;
-    @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private ChampionListAdapter mAdapter;
 
     public ArrayList<Champion> champions = new ArrayList<>();
 
@@ -40,11 +43,10 @@ public class ChampActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String champion = intent.getStringExtra("champion");
 
-        mChampionTextView.setText("Champion Data: " + champion);
         getChampions(champion);
     }
 
-    private void getChampions(String champion) {
+    private void getChampions(final String champion) {
         final PandaService pandaService = new PandaService();
         pandaService.findChampions(champion, new Callback() {
 
@@ -59,22 +61,15 @@ public class ChampActivity extends AppCompatActivity {
 
                    ChampActivity.this.runOnUiThread(new Runnable() {
 
-                       @Override
-                       public void run() {
-                           String[] championNames = new String[champions.size()];
-                           for (int i = 0; i < championNames.length; i++) {
-                               championNames[i] = champions.get(i).getName();
+                           @Override
+                           public void run() {
+                               mAdapter = new ChampionListAdapter(getApplicationContext(), champions);
+                               mRecyclerView.setAdapter(mAdapter);
+                               RecyclerView.LayoutManager layoutManager =
+                                       new LinearLayoutManager(ChampActivity.this);
+                               mRecyclerView.setLayoutManager(layoutManager);
+                               mRecyclerView.setHasFixedSize(true);
                            }
-
-                           ArrayAdapter adapter = new ArrayAdapter(ChampActivity.this, android.R.layout.simple_list_item_1, championNames);
-                           mListView.setAdapter(adapter);
-
-                           for (Champion champion : champions) {
-                               Log.d(TAG, champion.getName());
-                               Log.d(TAG, champion.getId());
-                           }
-
-                       }
                    });
             }
 

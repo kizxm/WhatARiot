@@ -57,9 +57,10 @@ public class PandaService {
                 JSONObject championJSON = pandaJSON.getJSONObject(i);
                 String name = championJSON.getString("name");
                 String id = championJSON.getString("id");
+                String hp = championJSON.getString("hp");
                 String image_url = championJSON.getString("image_url");
 
-                Champion champion = new Champion(name, id, image_url);
+                Champion champion = new Champion(name, id, hp, image_url);
                 champions.add(champion);
             }
         } catch (IOException e) {

@@ -10,6 +10,7 @@
 ![Alt text](img/blueboard.png)
 
 ✦✦✦✦✦✦✦✦✦✦✦
+
 _WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends._
 
 _CURRENTLY in `Constants.Java` you have the choice to search by either of two builds: `sorting build` for a full list of champions arranged by attribute or `filtering build` for returning a single champion. notation for accessing a sample of each is below._
@@ -28,9 +29,10 @@ _CURRENTLY in `Constants.Java` you have the choice to search by either of two bu
 
 | ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
 | ------------- | ------------- | ------------- |
-| `Filtering Build` | "Ashe" | Ashe Champion Data: Name, Id & Image URL|
 | ------------- | ------------- | ------------- |
-| `Sorting Build` | "attackdamage" | All Champions Returned and sorted by attackdamage |
+| `Constants` ➡ `Filtering Build` | "Ashe" | Ashe Champion Data: Name, Id & Image URL|
+| ------------- | ------------- | ------------- |
+| `Constants` ➡ `Sorting Build` | "attackdamage" | All Champions Returned and sorted by attackdamage |
 | ------------- | ------------- | ------------- |
 
 ## Technologies Used
