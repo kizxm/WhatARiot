@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.models.Champion;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,7 @@ public class ChampionListAdapter extends RecyclerView.Adapter<ChampionListAdapte
         }
 
         public void bindChampion(Champion champion) {
+            Picasso.with(mContext).load(champion.getImage_url()).into(mChampionImageView);
             mNameTextView.setText(champion.getName());
             mDataTextView.setText(champion.getHp() + " HP");
             mIdTextView.setText("Id # " + champion.getId());
