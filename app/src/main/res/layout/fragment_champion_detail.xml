@@ -82,7 +82,6 @@
                     android:id="@+id/websiteTextView"
                     android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
                     android:drawablePadding="4dp"
-                    android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
@@ -95,7 +94,6 @@
                     android:id="@+id/phoneTextView"
                     android:drawableLeft="@drawable/ic_local_phone_white_24dp"
                     android:drawablePadding="4dp"
-                    android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
@@ -108,7 +106,6 @@
                     android:drawableLeft="@drawable/ic_map_white_24dp"
                     android:drawablePadding="4dp"
                     android:id="@+id/addressTextView"
-                    android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
@@ -123,7 +120,6 @@
                 android:id="@+id/saveRestaurantButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorAccent"
-                android:textColor="@color/colorTextIcons"
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
