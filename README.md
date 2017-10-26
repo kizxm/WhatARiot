@@ -9,6 +9,10 @@
 
 
 >WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends.
+leave off point: https://www.learnhowtoprogram.com/android/web-service-backends-and-custom-fragments/custom-fragments
+> ADD A LARGE IMAGE VIEW (needs to be added to constructor)
+
+
 
 _(10/26) All entries/inputs for the filtering build **MUST** be capitalized!!_
 
@@ -21,9 +25,12 @@ _(10/25) CURRENTLY in `Constants.Java` you have the choice to search by either o
 `sorting build` for a full list of champions arranged by attribute or
 `filtering build` for returning a single champion. notation for accessing a sample of each is below._
 
+```
+**TODO:**
 - [x] RecyclerView
 - [ ] Linking out
 - [ ] Firebase
+```
 
 
 ## Setup/Installation Requirements

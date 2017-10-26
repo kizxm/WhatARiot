@@ -4,7 +4,10 @@ public class Champion {
     private String name;
     private String id;
     private String hp;
+    private String mp;
     private String image_url;
+    private String big_image_url;
+
 
     public Champion(String name, String id, String hp, String image_url) {
         this.name = name;
