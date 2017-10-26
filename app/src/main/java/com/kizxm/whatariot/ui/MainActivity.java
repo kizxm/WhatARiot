@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v == mChampionButton) {
                     String champion = mChampionEditText.getText().toString();
-                    Intent intent = new Intent(MainActivity.this, ChampActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ChampListActivity.class);
                     intent.putExtra("champion", champion);
                     startActivity(intent);
         }

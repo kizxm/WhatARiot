@@ -5,10 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.adapters.ChampionListAdapter;
@@ -24,9 +20,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ChampActivity extends AppCompatActivity {
+public class ChampListActivity extends AppCompatActivity {
 
-    public static final String TAG = ChampActivity.class.getSimpleName();
+    public static final String TAG = ChampListActivity.class.getSimpleName();
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ChampionListAdapter mAdapter;
@@ -59,14 +55,14 @@ public class ChampActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                    champions = pandaService.processResults(response);
 
-                   ChampActivity.this.runOnUiThread(new Runnable() {
+                   ChampListActivity.this.runOnUiThread(new Runnable() {
 
                            @Override
                            public void run() {
                                mAdapter = new ChampionListAdapter(getApplicationContext(), champions);
                                mRecyclerView.setAdapter(mAdapter);
                                RecyclerView.LayoutManager layoutManager =
-                                       new LinearLayoutManager(ChampActivity.this);
+                                       new LinearLayoutManager(ChampListActivity.this);
                                mRecyclerView.setLayoutManager(layoutManager);
                                mRecyclerView.setHasFixedSize(true);
                            }
