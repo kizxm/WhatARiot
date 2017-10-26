@@ -1,6 +1,9 @@
-package com.kizxm.whatariot;
+package com.kizxm.whatariot.services;
 
 import android.util.Log;
+
+import com.kizxm.whatariot.Constants;
+import com.kizxm.whatariot.models.Champion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,12 +45,16 @@ public class PandaService {
     public ArrayList<Champion> processResults(Response response) {
         ArrayList<Champion> champions = new ArrayList<>();
 
+        Log.v("jsonData2", champions.toString());
+
         try {
             String jsonData = response.body().string();
-            JSONObject pandaJSON = new JSONObject(jsonData);
-            JSONArray playableJSON = pandaJSON.getJSONArray("playables");
-            for (int i = 0; i < playableJSON.length(); i++) {
-                JSONObject championJSON = playableJSON.getJSONObject(i);
+            JSONArray pandaJSON = new JSONArray(jsonData);
+
+            Log.v("jsonData2", jsonData);
+
+            for (int i = 0; i < pandaJSON.length(); i++) {
+                JSONObject championJSON = pandaJSON.getJSONObject(i);
                 String name = championJSON.getString("name");
                 String id = championJSON.getString("id");
                 String image_url = championJSON.getString("image_url");

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kizxm.whatariot.MainActivity">
+    tools:context="com.kizxm.whatariot.ui.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,7 +34,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
-        android:hint="Enter Champion Name"
+        android:hint="Enter Search Parameters"
         android:inputType="textNoSuggestions"
         android:padding="5dp"
         android:selectAllOnFocus="false"

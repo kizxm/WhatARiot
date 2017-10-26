@@ -1,4 +1,4 @@
-package com.kizxm.whatariot;
+package com.kizxm.whatariot.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kizxm.whatariot.R;
+import com.kizxm.whatariot.models.Champion;
+import com.kizxm.whatariot.services.PandaService;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -16,8 +20,6 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import static com.kizxm.whatariot.R.id.listView;
 
 public class ChampActivity extends AppCompatActivity {
 
@@ -69,6 +71,7 @@ public class ChampActivity extends AppCompatActivity {
 
                            for (Champion champion : champions) {
                                Log.d(TAG, champion.getName());
+                               Log.d(TAG, champion.getId());
                            }
 
                        }

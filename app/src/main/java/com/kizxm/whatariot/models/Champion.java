@@ -1,4 +1,4 @@
-package com.kizxm.whatariot;
+package com.kizxm.whatariot.models;
 
 public class Champion {
     private String name;
