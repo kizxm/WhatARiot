@@ -1,11 +1,15 @@
 package com.kizxm.whatariot.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.adapters.ChampionListAdapter;
 import com.kizxm.whatariot.models.Champion;
@@ -18,9 +22,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.Response;
 
 public class ChampListActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentChampion;
 
     public static final String TAG = ChampListActivity.class.getSimpleName();
 
@@ -40,6 +47,12 @@ public class ChampListActivity extends AppCompatActivity {
         String champion = intent.getStringExtra("champion");
 
         getChampions(champion);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, champion);
+
+        Log.d("Shared Pref champ", mRecentChampion);
+
     }
 
     private void getChampions(final String champion) {

@@ -16,4 +16,6 @@ public class Constants {
     ///....///
 
 
+    public static final String PREFERENCES_CHAMPION_KEY = "champion";
+
 }
