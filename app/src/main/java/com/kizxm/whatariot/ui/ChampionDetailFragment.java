@@ -1,5 +1,7 @@
 package com.kizxm.whatariot.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,7 +20,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ChampionDetailFragment extends Fragment {
+public class ChampionDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.championImageView) ImageView mImageLabel;
     @Bind(R.id.championNameTextView) TextView mNameLabel;
     @Bind(R.id.dataTextView) TextView mDataLabel;
@@ -56,8 +58,19 @@ public class ChampionDetailFragment extends Fragment {
         mMpLabel.setText(mChampion.getMp() + " Base MP");
         mLargeImageLabel.setText(mChampion.getBig_image_url());
 
+        mLargeImageLabel.setOnClickListener(this);
 
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mLargeImageLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mChampion.getBig_image_url()));
+            startActivity(webIntent);
+        }
+
+    }
+}
 }
