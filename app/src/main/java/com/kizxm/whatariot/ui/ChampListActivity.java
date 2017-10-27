@@ -50,8 +50,9 @@ public class ChampListActivity extends AppCompatActivity {
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, champion);
-
-        Log.d("Shared Pref champ", mRecentChampion);
+        if (mRecentChampion != champion) {
+            getChampions(mRecentChampion);
+        }
 
     }
 

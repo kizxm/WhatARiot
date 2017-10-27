@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 if (v == mChampionButton) {
                     String champion = mChampionEditText.getText().toString();
+                    if(!(champion).equals("")) {
+                        addToSharedPreferences(champion);
+                    }
                     Intent intent = new Intent(MainActivity.this, ChampListActivity.class);
-                    intent.putExtra("champion", champion);
                     startActivity(intent);
                 }
             }
