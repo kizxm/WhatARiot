@@ -1,8 +1,8 @@
 package com.kizxm.whatariot.ui;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +22,9 @@ public class ChampionDetailFragment extends Fragment {
     @Bind(R.id.championImageView) ImageView mImageLabel;
     @Bind(R.id.championNameTextView) TextView mNameLabel;
     @Bind(R.id.dataTextView) TextView mDataLabel;
+    @Bind(R.id.mpTextView) TextView mMpLabel;
     @Bind(R.id.idTextView) TextView mIdLabel;
     @Bind(R.id.largeImageTextView) TextView mLargeImageLabel;
-    @Bind(R.id.mpTextView) TextView mMpLabel;
-    @Bind(R.id.speedTextView) TextView mSpeedLabel;
     @Bind(R.id.saveChampionButton) TextView mSaveChampionButton;
 
     private Champion mChampion;
@@ -43,19 +42,20 @@ public class ChampionDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mChampion = Parcels.unwrap(getArguments().getParcelable("champion"));
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_champion_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.with(view.getContext()).load(mChampion.getBig_image_url()).into(mImageLabel);
+        Picasso.with(view.getContext()).load(mChampion.getImage_url()).into(mImageLabel);
 
         mNameLabel.setText(mChampion.getName());
+        mIdLabel.setText("Id# " + mChampion.getId());
         mDataLabel.setText(mChampion.getHp() + " Base HP");
-        mIdLabel.setText("id# " + mChampion.getId());
-        mLargeImageLabel.setText(mChampion.getBig_image_url());
         mMpLabel.setText(mChampion.getMp() + " Base MP");
-        mSpeedLabel.setText(mChampion.getMovespeed() + " Base Move Speed");
+        mLargeImageLabel.setText(mChampion.getBig_image_url());
+
 
         return view;
     }

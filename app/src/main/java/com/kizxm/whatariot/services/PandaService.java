@@ -45,13 +45,13 @@ public class PandaService {
     public ArrayList<Champion> processResults(Response response) {
         ArrayList<Champion> champions = new ArrayList<>();
 
-        Log.v("jsonData2", champions.toString());
+        Log.v("yeah just testing here", champions.toString());
 
         try {
             String jsonData = response.body().string();
             JSONArray pandaJSON = new JSONArray(jsonData);
 
-            Log.v("jsonData2", jsonData);
+            Log.v("heres returned json", jsonData);
 
             for (int i = 0; i < pandaJSON.length(); i++) {
                 JSONObject championJSON = pandaJSON.getJSONObject(i);
@@ -59,11 +59,11 @@ public class PandaService {
                 String id = championJSON.getString("id");
                 String hp = championJSON.getString("hp");
                 String mp = championJSON.getString("mp");
-                String movespeed = championJSON.getString("movespeed");
+                String moveSpeed = championJSON.getString("movespeed");
                 String image_url = championJSON.getString("image_url");
                 String big_image_url = championJSON.getString("big_image_url");
 
-                Champion champion = new Champion(name, id, hp, mp, movespeed, image_url, big_image_url);
+                Champion champion = new Champion(name, id, hp, mp, moveSpeed, image_url, big_image_url);
                 champions.add(champion);
             }
         } catch (IOException e) {
