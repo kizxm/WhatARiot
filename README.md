@@ -26,7 +26,7 @@ _(10/25) CURRENTLY in `Constants.Java` you have the choice to search by either o
 `filtering build` for returning a single champion. notation for accessing a sample of each is below._
 
 ```
-**TODO:**
+**TODO**
 - [x] RecyclerView
 - [ ] Linking out
 - [ ] Firebase
