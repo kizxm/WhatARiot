@@ -1,6 +1,6 @@
 # WhatARiot
 #### By Kira Loo 🍅
-`Updated: 10/26/2017`
+`Updated: 10/27/2017`
 
 ## Description
 
@@ -8,11 +8,11 @@
 ![Alt text](img/blueboard.png)
 
 
->WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends.
-leave off point: https://www.learnhowtoprogram.com/android/web-service-backends-and-custom-fragments/custom-fragments
-> ADD A LARGE IMAGE VIEW (needs to be added to constructor)
+>WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends and is currently still in progress!!!.
+>
+>FOR FUTURE it would be nice if the entered champion information is wrong that the entire list of champions is returned.
 
-
+_(10/27) App is currently configured for the filtering build! Please note filtering build notation! Only Correct capitalized champion names are currently recognized!!!_
 
 _(10/26) All entries/inputs for the filtering build **MUST** be capitalized!!_
 
@@ -29,7 +29,8 @@ _(10/25) CURRENTLY in `Constants.Java` you have the choice to search by either o
 TODO
 - [x] RecyclerView
 - [x] Linking out
-- [ ] Firebase
+- [x] Firebase
+- [ ] Sign in + Sign out
 - [ ] What's next :) ?
 ```
 

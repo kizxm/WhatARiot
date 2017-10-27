@@ -26,14 +26,12 @@ import okhttp3.HttpUrl;
 import okhttp3.Response;
 
 public class ChampListActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentChampion;
-
-    public static final String TAG = ChampListActivity.class.getSimpleName();
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentChampion;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    private ChampionListAdapter mAdapter;
 
+    private ChampionListAdapter mAdapter;
     public ArrayList<Champion> champions = new ArrayList<>();
 
     @Override
@@ -48,11 +46,11 @@ public class ChampListActivity extends AppCompatActivity {
 
         getChampions(champion);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, champion);
-        if (mRecentChampion != champion) {
-            getChampions(mRecentChampion);
-        }
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, champion);
+//        if (mRecentChampion != champion) {
+//            getChampions(mRecentChampion);
+//        }
 
     }
 
