@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "164266563690",
+    "firebase_url": "https://whatariot-4cea3.firebaseio.com",
+    "project_id": "whatariot-4cea3",
+    "storage_bucket": "whatariot-4cea3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164266563690:android:6d597f4c5a9eac07",
+        "android_client_info": {
+          "package_name": "com.kizxm.whatariot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164266563690-vuqe8eklq27elkole0cmv7579vdmse77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kizxm.whatariot",
+            "certificate_hash": "7fba603abfee485cfc83f1904e14f7f0e75b8453"
+          }
+        },
+        {
+          "client_id": "164266563690-klj3qki0abb7kgc0jm6vikgdq1r2lh49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu4Z4OsrValj53SOZhzMItayyEkTltNyA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164266563690-klj3qki0abb7kgc0jm6vikgdq1r2lh49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
