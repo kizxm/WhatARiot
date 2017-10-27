@@ -73,4 +73,3 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
 
     }
 }
-}
