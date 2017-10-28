@@ -12,21 +12,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
     private DatabaseReference mSearchedChampionReference;
+    private ValueEventListener mSearchedChampionReferenceListener;
 
     @Bind (R.id.championButton) Button mChampionButton;
     @Bind (R.id.championEditText) EditText mChampionEditText;
@@ -40,6 +40,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_CHAMPION);
 
+        mSearchedChampionReferenceListener = mSearchedChampionReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot championSnapshot : dataSnapshot.getChildren()) {
+                    String champion = championSnapshot.getValue().toString();
+                    Log.d("Updated", "champion: " + champion);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -47,9 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface deliFont = Typeface.createFromAsset(getAssets(), "fonts/delrium.ttf");
         mRiotTextView.setTypeface(deliFont);
-
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
 
         mChampionButton.setOnClickListener(this);
     }
@@ -62,21 +75,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     saveChampionToFirebase(champion);
 
-//                    if(!(champion).equals("")) {
-//                        addToSharedPreferences(champion);
-//                    }
-
                     Intent intent = new Intent(MainActivity.this, ChampListActivity.class);
                     intent.putExtra("champion", champion);
                     startActivity(intent);
                 }
             }
 
-//        private void addToSharedPreferences(String champion) {
-//        mEditor.putString(Constants.PREFERENCES_CHAMPION_KEY, champion).apply();
-//    }
 
     public void saveChampionToFirebase(String champion) {
         mSearchedChampionReference.push().setValue(champion);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedChampionReference.removeEventListener(mSearchedChampionReferenceListener);
     }
 }
