@@ -42,7 +42,7 @@ public class SavedChampionListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Champion, FirebaseChampionViewHolder>
-                (Champion.class, R.layout.champ_list_item, FirebaseChampionViewHolder.class,
+                (Champion.class, R.layout.champion_list_item_drag, FirebaseChampionViewHolder.class,
                         mChampionReference) {
 
             @Override
