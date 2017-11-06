@@ -26,6 +26,7 @@ public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder implemen
 
 View mView;
 Context mContext;
+    public ImageView mChampionImageView;
 
     public FirebaseChampionViewHolder(View itemView) {
         super(itemView);
@@ -35,14 +36,14 @@ Context mContext;
     }
 
     public void bindChampion(Champion champion) {
-        ImageView championImageView = (ImageView) mView.findViewById(R.id.championImageView);
+        mChampionImageView = (ImageView) mView.findViewById(R.id.championImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.championNameTextView);
         TextView dataTextView = (TextView) mView.findViewById(R.id.dataTextView);
         TextView idTextView = (TextView) mView.findViewById(R.id.idTextView);
 
         Picasso.with(mContext)
                 .load(champion.getImage_url())
-                .into(championImageView);
+                .into(mChampionImageView);
 
         nameTextView.setText(champion.getName());
         idTextView.setText("Id# " + champion.getId());
