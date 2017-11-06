@@ -3,11 +3,16 @@ package com.kizxm.whatariot.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
@@ -26,13 +31,14 @@ import okhttp3.HttpUrl;
 import okhttp3.Response;
 
 public class ChampListActivity extends AppCompatActivity {
-//    private SharedPreferences mSharedPreferences;
-//    private String mRecentChampion;
+    private SharedPreferences mSharedPreferences;
+    private String mRecentChampion;
+    private SharedPreferences.Editor mEditor;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private ChampionListAdapter mAdapter;
-    public ArrayList<Champion> champions = new ArrayList<>();
+    public ArrayList<Champion> mChampions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +52,46 @@ public class ChampListActivity extends AppCompatActivity {
 
         getChampions(champion);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, champion);
-//        if (mRecentChampion != champion) {
-//            getChampions(mRecentChampion);
-//        }
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, null);
+        if (mRecentChampion != null) {
+            getChampions(mRecentChampion);
+        }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+                public boolean onQueryTextSubmit (String query) {
+                addToSharedPreferences(query);
+                getChampions(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     private void getChampions(final String champion) {
@@ -65,13 +105,14 @@ public class ChampListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) {
-                   champions = pandaService.processResults(response);
+                   mChampions = pandaService.processResults(response);
+
 
                    ChampListActivity.this.runOnUiThread(new Runnable() {
 
                            @Override
                            public void run() {
-                               mAdapter = new ChampionListAdapter(getApplicationContext(), champions);
+                               mAdapter = new ChampionListAdapter(getApplicationContext(), mChampions);
                                mRecyclerView.setAdapter(mAdapter);
                                RecyclerView.LayoutManager layoutManager =
                                        new LinearLayoutManager(ChampListActivity.this);
@@ -82,5 +123,9 @@ public class ChampListActivity extends AppCompatActivity {
             }
 
         });
-    }
 }
+
+        private void addToSharedPreferences (String champion) {
+            mEditor.putString(Constants.PREFERENCES_CHAMPION_KEY, champion).apply();
+        }
+    }
