@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kizxm.whatariot.Constants;
@@ -29,8 +31,13 @@ public class SavedChampionListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_champ);
         ButterKnife.bind(this);
 
-        mChampionReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHAMPIONS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mChampionReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHAMPIONS)
+                .child(uid);
         setUpFirebaseAdapter();
+
     }
 
     private void setUpFirebaseAdapter() {

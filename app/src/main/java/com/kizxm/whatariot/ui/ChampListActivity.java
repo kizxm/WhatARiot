@@ -1,8 +1,11 @@
 package com.kizxm.whatariot.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +16,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.firebase.auth.AuthResult;
 import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.adapters.ChampionListAdapter;
@@ -39,6 +44,7 @@ public class ChampListActivity extends AppCompatActivity {
 
     private ChampionListAdapter mAdapter;
     public ArrayList<Champion> mChampions = new ArrayList<>();
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +58,21 @@ public class ChampListActivity extends AppCompatActivity {
 
         getChampions(champion);
 
+        createAuthProgressDialog();
+
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, null);
+        mAuthProgressDialog.show();
         if (mRecentChampion != null) {
             getChampions(mRecentChampion);
-        }
 
+        }
+    }
+
+    private void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("LOADING...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
@@ -120,6 +135,7 @@ public class ChampListActivity extends AppCompatActivity {
                                mRecyclerView.setHasFixedSize(true);
                            }
                    });
+                mAuthProgressDialog.dismiss();
             }
 
         });
