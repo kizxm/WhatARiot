@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void saveChampionToFirebase(String champion) {
         mSearchedChampionReference.push().setValue(champion);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

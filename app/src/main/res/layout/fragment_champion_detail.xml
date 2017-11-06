@@ -102,6 +102,7 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
+
             </LinearLayout>
 
             <Button
@@ -109,6 +110,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
                 android:background="@color/colorPrimary"
                 android:text="Save Champion"
                 android:textColorLink="@android:color/background_light"

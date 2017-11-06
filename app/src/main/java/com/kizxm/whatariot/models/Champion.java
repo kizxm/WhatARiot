@@ -4,13 +4,13 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Champion {
-    private String name;
-    private String id;
-    private String hp;
-    private String mp;
-    private String moveSpeed;
-    private String image_url;
-    private String big_image_url;
+    String name;
+    String id;
+    String hp;
+    String mp;
+    String moveSpeed;
+    String image_url;
+    String big_image_url;
 
 
     public Champion() {}
@@ -39,7 +39,7 @@ public class Champion {
 
     public String getMp() { return mp;}
 
-    public String getMovespeed() { return moveSpeed; }
+    public String getMoveSpeed() { return moveSpeed; }
 
     public String getBig_image_url() { return big_image_url; }
 

@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.models.Champion;
 import com.squareup.picasso.Picasso;
@@ -59,6 +63,7 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
         mLargeImageLabel.setText(mChampion.getBig_image_url());
 
         mLargeImageLabel.setOnClickListener(this);
+        mSaveChampionButton.setOnClickListener(this);
 
         return view;
     }
@@ -68,7 +73,16 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
         if (v == mLargeImageLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mChampion.getBig_image_url()));
+                    Log.d("Saved champ2:", "hello2");
             startActivity(webIntent);
+        }
+        if (v == mSaveChampionButton) {
+            DatabaseReference championRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CHAMPIONS);
+            championRef.push().setValue(mChampion);
+            Log.d("Saved champ:", "hello");
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
     }
