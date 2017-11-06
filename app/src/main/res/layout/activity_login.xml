@@ -22,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/logTextView" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -44,23 +44,26 @@
 
 
     <Button
-        android:id="@+id/passwordLoginButton"
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:padding="10dp"
         android:text="Log in"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/registerTextView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/registerTextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="215dp"
@@ -78,23 +81,23 @@
 
 
     <TextView
+        android:id="@+id/logTextView"
         android:layout_width="383dp"
         android:layout_height="93dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Login"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="36sp"
+        android:textSize="80sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/registerTextView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:id="@+id/textView2"
-        app:layout_constraintBottom_toBottomOf="@+id/registerTextView"
-        android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.017" />
 
 </android.support.constraint.ConstraintLayout>
