@@ -22,17 +22,16 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder {
 
-View mView;
-Context mContext;
+    View mView;
+    Context mContext;
     public ImageView mChampionImageView;
 
     public FirebaseChampionViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindChampion(Champion champion) {
@@ -48,32 +47,5 @@ Context mContext;
         nameTextView.setText(champion.getName());
         idTextView.setText("Id# " + champion.getId());
         dataTextView.setText(champion.getHp() + " Base HP");
-    }
-
-    @Override
-    public void onClick(View view) {
-        final ArrayList<Champion> champions = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CHAMPIONS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    champions.add(snapshot.getValue(Champion.class));
-                }
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, ChampionDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("champions", Parcels.wrap(champions));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
     }
 }

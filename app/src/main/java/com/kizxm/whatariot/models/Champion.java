@@ -11,8 +11,9 @@ public class Champion {
     String moveSpeed;
     String image_url;
     String big_image_url;
-    private String pushId;
 
+    private String pushId;
+    String index;
 
     public Champion() {}
 
@@ -24,6 +25,7 @@ public class Champion {
         this.moveSpeed = moveSpeed;
         this.image_url = image_url;
         this.big_image_url = big_image_url;
+        this.index = "not_specified";
     }
 
     public String getName() {
@@ -48,7 +50,12 @@ public class Champion {
         return image_url;
     }
 
-    public String getPushId() { return pushId;  }
+    public String getPushId() { return pushId; }
 
-    public void setPushId(String pushId) {  this.pushId = pushId;   }
+    public void setPushId(String pushId) { this.pushId = pushId; }
+
+    public String getIndex() { return index; }
+
+    public void setIndex(String index) { this.index = index; }
 }
+

@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.adapters.FirebaseChampionListAdapter;
@@ -41,6 +42,11 @@ public class SavedChampionListActivity extends AppCompatActivity implements OnSt
     private void setUpFirebaseAdapter() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
+
+        Query query = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_CHAMPIONS)
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mChampionReference = FirebaseDatabase
                 .getInstance()
