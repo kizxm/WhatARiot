@@ -21,9 +21,10 @@
         <activity android:name=".ui.ChampListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kizxm.whatariot.ui.MainActivity"></meta-data>
+                android:value="com.kizxm.whatariot.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.ChampionDetailActivity"></activity>
+        <activity android:name=".ui.ChampionDetailActivity" />
+        <activity android:name=".ui.SavedChampionListActivity"></activity>
     </application>
 
 </manifest>
