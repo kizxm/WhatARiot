@@ -11,6 +11,7 @@ public class Champion {
     String moveSpeed;
     String image_url;
     String big_image_url;
+    private String pushId;
 
 
     public Champion() {}
@@ -46,4 +47,8 @@ public class Champion {
     public String getImage_url() {
         return image_url;
     }
+
+    public String getPushId() { return pushId;  }
+
+    public void setPushId(String pushId) {  this.pushId = pushId;   }
 }

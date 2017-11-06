@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kizxm.whatariot.Constants;
@@ -77,11 +79,20 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
             startActivity(webIntent);
         }
         if (v == mSaveChampionButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             DatabaseReference championRef = FirebaseDatabase
+
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CHAMPIONS);
-            championRef.push().setValue(mChampion);
-            Log.d("Saved champ:", "hello");
+                    .getReference(Constants.FIREBASE_CHILD_CHAMPIONS)
+                    .child(uid);
+
+            DatabaseReference pushRef = championRef.push();
+            String pushId = pushRef.getKey();
+            mChampion.setPushId(pushId);
+            pushRef.setValue(mChampion);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
 
