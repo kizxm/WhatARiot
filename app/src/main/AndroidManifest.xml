@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.ChampListActivity">
             <meta-data
@@ -24,7 +20,15 @@
                 android:value="com.kizxm.whatariot.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.ChampionDetailActivity" />
-        <activity android:name=".ui.SavedChampionListActivity"></activity>
+        <activity android:name=".ui.SavedChampionListActivity" />
+        <activity android:name=".ui.CreateAccountActivity" />
+        <activity android:name=".ui.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
