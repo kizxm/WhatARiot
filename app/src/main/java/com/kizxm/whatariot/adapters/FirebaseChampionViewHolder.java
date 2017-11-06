@@ -41,7 +41,7 @@ Context mContext;
         TextView idTextView = (TextView) mView.findViewById(R.id.idTextView);
 
         Picasso.with(mContext)
-                .load(champion.getBig_image_url())
+                .load(champion.getImage_url())
                 .into(championImageView);
 
         nameTextView.setText(champion.getName());

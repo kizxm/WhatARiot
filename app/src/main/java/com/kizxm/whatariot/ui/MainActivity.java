@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind (R.id.championButton) Button mChampionButton;
     @Bind (R.id.championEditText) EditText mChampionEditText;
     @Bind (R.id.riotView) TextView mRiotTextView;
+    @Bind (R.id.savedChampionsButton) Button mSavedChampionsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,25 +59,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
 
         Typeface deliFont = Typeface.createFromAsset(getAssets(), "fonts/delrium.ttf");
         mRiotTextView.setTypeface(deliFont);
 
         mChampionButton.setOnClickListener(this);
+        mSavedChampionsButton.setOnClickListener(this);
     }
 
             @Override
             public void onClick(View v) {
                 if (v == mChampionButton) {
-
                     String champion = mChampionEditText.getText().toString();
-
                     saveChampionToFirebase(champion);
 
                     Intent intent = new Intent(MainActivity.this, ChampListActivity.class);
                     intent.putExtra("champion", champion);
+                    startActivity(intent);
+                }
+                if (v == mSavedChampionsButton) {
+                    Intent intent = new Intent(MainActivity.this, SavedChampionListActivity.class);
                     startActivity(intent);
                 }
             }
