@@ -3,19 +3,14 @@
 `Updated: 11/7/2017`
 
 ## Description
-
-
-![Alt text](img/screen1.png)
-
-
 _WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends and is currently still in progress!!!.
 
 With the app you can login-logout, view all the champions (chronologically), search from the list, save champions and view your list of saved champions._
 
 
 ![Alt text](img/screen2.png)
-
-##BUILD NOTES##
+![Alt text](img/screen1.png)
+#### BUILD NOTES
 >(10/27) App is currently configured for the filtering build! Please note filtering build notation! Only Correct capitalized champion names are currently recognized!!!_
 
 >(10/26) All entries/inputs for the filtering build **MUST** be capitalized!!
