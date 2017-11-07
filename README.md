@@ -4,11 +4,11 @@
 
 ## Description
 
-WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game League of Legends. With a quick click you can access API Data for the game and view a list of all champions in chronological order.
+_WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game League of Legends. With a quick click you can access API Data for the game and view a list of all champions in chronological order._
 
 ![Alt text](img/screen1.png)
 
-With the app you can login-logout, create a authorized new user, view all the champions (chronologically), change the view upon rotation, search from the list, save champions and view your list of saved champions. Key features are a clean UI and comprehensive display of list data.
+_With the app you can login-logout, create a authorized new user, view all the champions (chronologically), change the view upon rotation, search from the list, save champions and view your list of saved champions. Key features are a clean UI and comprehensive display of list data._
 
 
 ---------------
