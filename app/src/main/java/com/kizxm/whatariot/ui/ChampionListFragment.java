@@ -61,7 +61,8 @@ public class ChampionListFragment extends Fragment {
         mRecentChampion = mSharedPreferences.getString(Constants.PREFERENCES_CHAMPION_KEY, null);
 
         if (mRecentChampion != null) {
-            getChampions(mRecentChampion);
+            getChampions(null);
+            //optional choice ^ (mRecentChampion)
         }
 
         return view;

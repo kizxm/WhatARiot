@@ -1,37 +1,42 @@
-# WhatARiot
+![Alt text](img/whatariot.png)
 #### By Kira Loo 🍅
-`Updated: 10/27/2017`
+`Updated: 11/7/2017`
 
 ## Description
 
 
-![Alt text](img/blueboard.png)
+![Alt text](img/screen1.png)
 
 
->WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends and is currently still in progress!!!.
+_WhatARiot is a simple app made for accessing different game datas from the healthy and family friendly game league of legends and is currently still in progress!!!.
+
+With the app you can login-logout, view all the champions (chronologically), search from the list, save champions and view your list of saved champions._
+
+
+![Alt text](img/screen2.png)
+
+##BUILD NOTES##
+>(10/27) App is currently configured for the filtering build! Please note filtering build notation! Only Correct capitalized champion names are currently recognized!!!_
+
+>(10/26) All entries/inputs for the filtering build **MUST** be capitalized!!
 >
->FOR FUTURE it would be nice if the entered champion information is wrong that the entire list of champions is returned.
-
-_(10/27) App is currently configured for the filtering build! Please note filtering build notation! Only Correct capitalized champion names are currently recognized!!!_
-
-_(10/26) All entries/inputs for the filtering build **MUST** be capitalized!!_
-
 ```
 ex. 'janna' -> will return nothing
 ex. 'Janna' -> will return champion information
 ```
-
-_(10/25) CURRENTLY in `Constants.Java` you have the choice to search by either of two builds:
-`sorting build` for a full list of champions arranged by attribute or
-`filtering build` for returning a single champion. notation for accessing a sample of each is below._
+>
+>
+>(10/25) in `Constants.Java` you have the choice to search by either of two builds:
+>
+>`sorting build` for a full list of champions arranged by attribute or
+>
+>`filtering build` for returning a single champion. notation for accessing a sample of each is below.
 
 ```
-TODO
-- [x] RecyclerView
-- [x] Linking out
-- [x] Firebase
-- [ ] Sign in + Sign out
-- [ ] What's next :) ?
+FUTURE BUILDOUT
+- [ ] Animations + Animator
+- [ ] Improved UI
+- [ ] Tests
 ```
 
 
@@ -39,14 +44,22 @@ TODO
 ✦✦✦✦✦✦✦✦✦✦✦
 
 * Android Emulator
+* Android Studio
 
 ## Specifications
 ✦✦✦✦✦✦✦✦✦✦✦
 
 | ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
 | ------------- | ------------- | ------------- |
+| Sign-in | user: email@email.com pass: password | Welcome back user! |
+| Sign-out | Click -> Sign-out | User is signed out |
+| Create new user | name: Kira user: email@email.com pass: password | New user created|
+| See all champions | Click -> See all champions | list of all champions  |
+| Save Champion | Click -> Save Champion | champion is saved to Firebase & list of saved champions |
+| Save Champion list | Click -> Saved Champions | List of all saved champions |
+| Reorder List | Drag to reorder | Champions are visually rearranged and reordered on Firebase |
+| Delete from List | Swipe to delete | champion is deleted from list and Firebase |
 | `Constants` ➡ `Filtering Build` | "Ashe" | Ashe Champion Data: Name, Id & Image URL|
-| ------------- | ------------- | ------------- |
 | `Constants` ➡ `Sorting Build` | "attackdamage" | All Champions Returned and sorted by attackdamage |
 | ------------- | ------------- | ------------- |
 | more 🐣 | coming 🐥 | soon 🐓 |

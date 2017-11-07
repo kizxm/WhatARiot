@@ -29,14 +29,10 @@ public class PandaService {
         urlBuilder.addQueryParameter(Constants.PANDA_CHAMP_QUERY, champion);
         String url = urlBuilder.build().toString();
 
-        Log.d("url1: ", url);
-
         Request request = new Request.Builder()
                 .url(url)
                 .header("Authorization", Constants.PANDA_KEY)
                 .build();
-
-        Log.d("url: ", url);
 
         Call call = client.newCall(request);
         call.enqueue(callback);
@@ -45,13 +41,11 @@ public class PandaService {
     public ArrayList<Champion> processResults(Response response) {
         ArrayList<Champion> champions = new ArrayList<>();
 
-        Log.v("yeah just testing here", champions.toString());
-
         try {
             String jsonData = response.body().string();
             JSONArray pandaJSON = new JSONArray(jsonData);
 
-            Log.v("heres returned json", jsonData);
+            Log.v("Returned Data:", jsonData);
 
             for (int i = 0; i < pandaJSON.length(); i++) {
                 JSONObject championJSON = pandaJSON.getJSONObject(i);

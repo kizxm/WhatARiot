@@ -84,7 +84,6 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
         if (v == mLargeImageLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mChampion.getBig_image_url()));
-                    Log.d("Saved champ2:", "hello2");
             startActivity(webIntent);
         }
         if (v == mSaveChampionButton) {
