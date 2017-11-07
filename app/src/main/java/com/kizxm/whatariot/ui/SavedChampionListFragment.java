@@ -27,13 +27,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedChampionListFragment extends Fragment implements OnStartDragListener {
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-
     private FirebaseChampionListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
-    public SavedChampionListFragment() {
-    }
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+
+    public SavedChampionListFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +68,10 @@ public class SavedChampionListFragment extends Fragment implements OnStartDragLi
                 mFirebaseAdapter.notifyDataSetChanged();
             }
         });
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     @Override
@@ -81,6 +84,4 @@ public class SavedChampionListFragment extends Fragment implements OnStartDragLi
         super.onDestroy();
         mFirebaseAdapter.cleanup();
     }
-
-
 }

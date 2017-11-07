@@ -116,10 +116,10 @@ public class FirebaseChampionListAdapter extends FirebaseRecyclerAdapter<Champio
         }
     }
 
-        @Override
-        public void cleanup () {
-            super.cleanup();
-            setIndexInFirebase();
-            mRef.removeEventListener(mChildEventListener);
-        }
+    @Override
+    public void cleanup () {
+        super.cleanup();
+        setIndexInFirebase();
+        mRef.removeEventListener(mChildEventListener);
     }
+}

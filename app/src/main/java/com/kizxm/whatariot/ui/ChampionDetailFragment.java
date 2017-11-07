@@ -56,7 +56,7 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mChampion = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_CHAMPIONS));
+        mChampions = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_CHAMPIONS));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mChampion = mChampions.get(mPosition);
     }

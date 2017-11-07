@@ -1,28 +1,23 @@
 package com.kizxm.whatariot.adapters;
 
+
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.kizxm.whatariot.Constants;
 import com.kizxm.whatariot.R;
 import com.kizxm.whatariot.models.Champion;
-import com.kizxm.whatariot.ui.ChampionDetailActivity;
+import com.kizxm.whatariot.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
-import org.parceler.Parcels;
 
-import java.util.ArrayList;
-
-public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder {
+public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
 
     View mView;
     Context mContext;
@@ -48,4 +43,21 @@ public class FirebaseChampionViewHolder extends RecyclerView.ViewHolder {
         idTextView.setText("Id# " + champion.getId());
         dataTextView.setText(champion.getHp() + " Base HP");
     }
-}
+
+    @Override
+    public void onItemSelected() {
+//        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+//                R.animator.drag_scale_on);
+//        set.setTarget(itemView);
+//        set.start();
+    }
+
+    @Override
+        public void onItemClear() {
+//            AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+//                    R.animator.drag_scale_off);
+//            set.setTarget(itemView);
+//            set.start();
+        }
+
+    }
