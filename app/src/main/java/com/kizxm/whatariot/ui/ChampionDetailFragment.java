@@ -23,6 +23,8 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -36,11 +38,17 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.saveChampionButton) TextView mSaveChampionButton;
 
     private Champion mChampion;
+    private ArrayList<Champion> mChampions;
+    private int mPosition;
 
-    public static ChampionDetailFragment newInstance(Champion champion) {
+
+    public static ChampionDetailFragment newInstance(ArrayList<Champion> champions, Integer position) {
         ChampionDetailFragment championDetailFragment = new ChampionDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("champion", Parcels.wrap(champion));
+
+        args.putParcelable(Constants.EXTRA_KEY_CHAMPIONS, Parcels.wrap(champions));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
         championDetailFragment.setArguments(args);
         return championDetailFragment;
     }
@@ -48,9 +56,10 @@ public class ChampionDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mChampion = Parcels.unwrap(getArguments().getParcelable("champion"));
+        mChampion = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_CHAMPIONS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mChampion = mChampions.get(mPosition);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_champion_detail, container, false);

@@ -19,7 +19,7 @@ public class ChampionPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return ChampionDetailFragment.newInstance(mChampions.get(position));
+        return ChampionDetailFragment.newInstance(mChampions, position);
     }
 
     @Override
